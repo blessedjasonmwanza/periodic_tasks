@@ -89,7 +89,7 @@ Required ```get``` params
 - start (date) a valid date when user intends to start the activity/task
  - end (date) a valid date when user intends to be done with the activity
 
- ### between
+ ### mail_reminder
  > send reminder or tasks past due
 
  Required ```get``` params
