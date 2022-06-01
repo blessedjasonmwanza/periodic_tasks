@@ -3,8 +3,8 @@
 API to help you add, fetch, and send reminder tasks to users
 
 ## Requirements
-- PHP 7.1 and above.
-
+- [PHP](https://php.net) 7.1 and above. 
+- Knowledge on how [Medoo](https://medoo.in) db wrapper works.
 ## Installation
  > assuming you're using localhost
 
