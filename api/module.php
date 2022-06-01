@@ -1,6 +1,7 @@
 <?php
-class periodic_tasks
+class PeriodicTasks
 {
+  protected $db;
   public function __construct($medoo_db_instance)
   {
     $this->db = $medoo_db_instance;
@@ -54,6 +55,25 @@ class periodic_tasks
     $tasks = $this->db->select('tasks', '*', [
       'user_id' => $user_id,
       'start_date[<=]' => date('Y-m-d')
+    ]);
+    return $this->json_response((bool)$this->db->error, $tasks);
+  }
+  function due_this_week($user_id)
+  {
+    
+    $tasks = $this->db->select('tasks', '*', [
+      'user_id' => $user_id,
+      'end_date[>=]' => date('Y-m-d', strtotime('monday this week')),
+      'end_date[<=]' => date('Y-m-d', strtotime('sunday this week'))
+    ]);
+    return $this->json_response((bool)$this->db->error, $tasks);
+  }
+  function due_next_week($user_id)
+  {
+    $tasks = $this->db->select('tasks', '*', [
+      'user_id' => $user_id,
+      'end_date[>=]' => date('Y-m-d', strtotime("monday next week")),
+      'end_date[<=]' => date('Y-m-d', strtotime("sunday next week"))
     ]);
     return $this->json_response((bool)$this->db->error, $tasks);
   }
