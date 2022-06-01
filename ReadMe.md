@@ -1,6 +1,8 @@
 # Periodic tasks API
-
 API to help you add, fetch, and send reminder tasks to users
+
+> Note: this API has not yet been tested, it is an answer to how technical question can be implemented
+
 
 ## Requirements
 - [PHP](https://php.net) 7.1 and above. 
