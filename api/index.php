@@ -4,8 +4,8 @@ require __DIR__.'/module.php';
 
 $module = new PeriodicTasks($db);
 
-if(isset($_GET['action'])) {
-  $action = $_GET['action'];
+if(isset($_POST['action'])) {
+  $action = $_POST['action'];
   if(function_exists('match')){
     $api_response = match($action){
     'add' => $module->add($_POST['description'], $_POST['start'], $_POST['end'], $_POST['user_id']),
