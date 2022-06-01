@@ -16,7 +16,7 @@ if(isset($_GET['action'])) {
     'due_next_week' => $module->due_next_week($_POST['user_id']),
     'between' => $module->between($_POST['user_id'], $_POST['start'], $_POST['end']),
     'mail_reminder' => $module->mail_reminder($_POST['user_id']),
-    'default' => $module->json_response(false, ['error' => 'Invalid action'])
+    'default' => $module->json_response(true, ['error' => 'Invalid action'])
     };
   }else{
     switch($action) {
@@ -45,11 +45,11 @@ if(isset($_GET['action'])) {
         $api_response = $module->mail_reminder($_POST['user_id']);
         break;
       default:
-        $api_response = $module->json_response(false, ['error' => 'Invalid action']);
+        $api_response = $module->json_response(true, ['error' => 'Invalid action']);
         break;
     }
   }
 }else{
-    $api_response = $module->json_response(false, ['error' => 'No action specified']);
+    $api_response = $module->json_response(true, ['error' => 'No action specified']);
 }
 exit($api_response);
